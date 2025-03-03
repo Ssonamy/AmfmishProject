@@ -1,3 +1,21 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def index(request):
+    posts = Post.objects.all()  # Получаем все посты
+    return render(request, 'blog/index.html', {'posts': posts})  # Передаём в шаблон
+
+
+from rest_framework import viewsets
+from .models import Post, Comment
+from .serializers import PostSerializer, CommentSerializer
+
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
