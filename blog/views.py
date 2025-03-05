@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+<<<<<<< HEAD
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import ImageUploadForm
@@ -19,6 +20,9 @@ def upload_image(request):
 
     images = UploadedImage.objects.filter(user=request.user)
     return render(request, 'blog/upload.html', {'form': form, 'images': images})
+=======
+
+>>>>>>> a5b6113 (Добавил рестфреймворк а также круд операции)
 def index(request):
     return HttpResponse("Главная страница блога!")
 
@@ -29,7 +33,10 @@ from .serializers import PostSerializer
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+<<<<<<< HEAD
 
 def index(request):
     posts = Post.objects.all()  # Получаем все посты
     return render(request, 'blog/index.html', {'posts': posts})
+=======
+>>>>>>> a5b6113 (Добавил рестфреймворк а также круд операции)

@@ -11,11 +11,14 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+<<<<<<< HEAD
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
+=======
+>>>>>>> a5b6113 (Добавил рестфреймворк а также круд операции)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -38,7 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+<<<<<<< HEAD
     'home',
+=======
+>>>>>>> a5b6113 (Добавил рестфреймворк а также круд операции)
     'rest_framework',
     'blog',
     'users',

@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+<<<<<<< HEAD
 import os
 import uuid
+=======
+>>>>>>> a5b6113 (Добавил рестфреймворк а также круд операции)
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -10,6 +13,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'Профиль {self.user.username}'
+<<<<<<< HEAD
 
 def user_directory_path(instance, filename):
     ext = filename.split('.')[-1]
@@ -21,3 +25,5 @@ class ImageUpload(models.Model):
     file = models.ImageField(upload_to=user_directory_path)
     upload_date = models.DateTimeField(auto_now_add=True)
     description = models.TextField(blank=True)
+=======
+>>>>>>> a5b6113 (Добавил рестфреймворк а также круд операции)

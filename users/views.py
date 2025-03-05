@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
@@ -39,3 +40,9 @@ def register(request):
 
     return render(request, 'users/register.html', {'form': form})
 
+=======
+from django.http import HttpResponse
+
+def profile(request):
+    return HttpResponse("Страница пользователя")
+>>>>>>> a5b6113 (Добавил рестфреймворк а также круд операции)

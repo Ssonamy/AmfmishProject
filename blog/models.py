@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User  # Подключаем встроенную модель пользователей
+<<<<<<< HEAD
 import os
 import uuid
+=======
+>>>>>>> a5b6113 (Добавил рестфреймворк а также круд операции)
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -10,6 +13,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+<<<<<<< HEAD
 def upload_to(instance, filename):
     ext = filename.split('.')[-1]
     unique_filename = f"{uuid.uuid4()}.{ext}"  # Генерируем уникальное имя
@@ -25,6 +29,8 @@ class UploadedImage(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.file.name}"
 
+=======
+>>>>>>> a5b6113 (Добавил рестфреймворк а также круд операции)
 class Post(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
