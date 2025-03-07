@@ -1,6 +1,7 @@
 from django.urls import path
-from . import views
+from .views import users_list, user_profile
 
 urlpatterns = [
-    path('', views.profile, name='profile'),  # Главная страница пользователей
+    path('<int:user_id>/', user_profile, name='user_profile'),
+    path('', users_list, name='users_list'),
 ]
