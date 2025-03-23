@@ -2,26 +2,26 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Мой сайт{% endblock %}</title>
+    <title>Блог</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Главная</a></li>
-                <li><a href="{% url 'blog:post_list' %}">Блог</a></li>
-                <li><a href="{% url 'users:profile' %}">Профиль</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-
-    <footer>
-        <p>&copy; 2025 Мой сайт</p>
-    </footer>
+    <nav>
+        <a href="{% url 'home' %}">Главная</a>
+        <a href="{% url 'users_list' %}">Пользователи</a>
+        <a href="{% url 'blog:index' %}">Главная блога</a>
+{% if user.is_authenticated %}
+    <!-- Если пользователь авторизован, показываем форму для логаута -->
+    <form action="{% url 'blog:logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Логаут</button>
+    </form>
+{% else %}
+    <!-- Если пользователь не авторизован, показываем ссылку на логин -->
+    <a href="{% url 'login' %}">Логин</a>
+{% endif %}
+    </nav>
+    <hr>
+    {% block content %}{% endblock %}
 </body>
 </html>

@@ -1,24 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Профиль {{ user.username }}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'home/styles.css' %}">
-</head>
-<body>
-    <h1>Профиль пользователя: {{ user.username }}</h1>
+{% extends 'home/index.html' %}
 
-    <h2>Посты:</h2>
-    {% for post in posts %}
-        <div>
-            <h3>{{ post.title }}</h3>
-            <p>{{ post.content }}</p>
-            <small>Дата: {{ post.created_at }}</small>
-        </div>
-        <hr>
-    {% empty %}
-        <p>Этот пользователь ещё не написал ни одного поста.</p>
-    {% endfor %}
-</body>
-</html>
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+    <h2>Ваш профиль</h2>
+    <p>Привет, {{ user.username }}!</p>
+{% endblock %}

@@ -1,8 +1,24 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .forms import ImageUploadForm
+from .models import UploadedImage
 from .models import Post
 
+@login_required
+def upload_image(request):
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.user = request.user
+            image.save()
+            return redirect('blog:upload_image')
+    else:
+        form = ImageUploadForm()
 
+    images = UploadedImage.objects.filter(user=request.user)
+    return render(request, 'blog/upload.html', {'form': form, 'images': images})
 def index(request):
     return HttpResponse("Главная страница блога!")
 

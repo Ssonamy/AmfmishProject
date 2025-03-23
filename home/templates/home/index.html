@@ -1,14 +1,15 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Главная</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'home/styles.css' %}">
-</head>
-<body>
-    <h1>Добро пожаловать на главную страницу!</h1>
-    <a href="/blog/">Перейти в блог</a>
-    <a href="/users/">Перейти в профиль пользователя</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Добро пожаловать в блог!</h1>
+    <ul>
+        <li><a href="{% url 'users_list' %}">Список пользователей</a></li>
+        <li><a href="{% url 'blog:index' %}">Главная блога</a></li>
+    </ul>
+
+    {% if user.is_authenticated %}
+        <p>Вы вошли как {{ user.username }} | <a href="{% url 'logout' %}">Выйти</a></p>
+    {% else %}
+        <a href="{% url 'login' %}" class="btn btn-primary">Войти</a>
+    {% endif %}
+{% endblock %}
